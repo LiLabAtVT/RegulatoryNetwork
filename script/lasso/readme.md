@@ -1,4 +1,4 @@
-This folder contains scripts for Bayesian regression.
+This folder contains scripts for LASSO regression. Start the file from 'MainChipX.py'
 The data used:
 'golddata.csv', which is golden standard dataset from Dapseq, first column is the TFs and
 the second column is the target genes.
