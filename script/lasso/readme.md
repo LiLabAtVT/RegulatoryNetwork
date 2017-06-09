@@ -11,7 +11,7 @@ The result will be save in a folder named 'result1'. Three folders are in 'resul
 In each of the three folders, every single recognized TFs according to the
 'tfs.csv' file are save as a '.csv' file by their name. There are three columns in
 each the TFs name '.csv' files. The first column is the TF names, they are all same
-for each file. The second column is the inferred target genes and the third column
+for each file itself. The second column is the inferred target genes and the third column
 is the inferred weight. A positive weight means the TF might increase the expression
 of the gene and a negative weight means the TF might inhibit the express of the
 gene.

@@ -1,4 +1,4 @@
-This folder contains scripts for Bayesian regression.
+This folder contains scripts for Bayesian regression.Start the file from 'MainBayesian.py'
 The data used:
 'golddata.csv', which is golden standard dataset from Dapseq, first column is the TFs and
 the second column is the target genes.
@@ -6,3 +6,10 @@ the second column is the target genes.
 of genes and TFs) and each row is an experiment.
 'tfs.csv': which is a list of the names of all the TFs.
 
+The result will be save in a folder named 'result1'. Every single recognized TFs according to the
+'tfs.csv' file are save as a '.csv' file by their name. There are three columns in
+each the TFs name '.csv' files. The first column is the TF names, they are all same
+for each file itself. The second column is the inferred target genes and the third column
+is the inferred weight. A positive weight means the TF might increase the expression
+of the gene and a negative weight means the TF might inhibit the express of the
+gene.
