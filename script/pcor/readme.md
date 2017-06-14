@@ -21,3 +21,23 @@ Example command line usage:
 ```bash
 Rscript script/pcor/PCOR.R ./data/GSE10670_ave_TopVar.csv
 ```
+Example output format can be found in ./results/pcor.csv. Here is first few lines of this result.
+
+```
+"regulator","target","score","rank"
+"AT2G35730","AT3G60140",0.00165,1.5
+"AT3G60140","AT2G35730",0.00165,1.5
+"AT1G01480","AT3G60140",0.00148,3.5
+"AT3G60140","AT1G01480",0.00148,3.5
+"AT2G35730","AT1G01480",0.00130,5.5
+```
+
+The output is a comma separated table with four columns.
+
+|"regulator"|"target"|"score"|"rank"|
+|---|---|---|---|
+|"AT2G35730"|"AT3G60140"|0.00165|1.5|
+|"AT3G60140"|"AT2G35730"|0.00165|1.5|
+|"AT1G01480"|"AT3G60140"|0.00148|3.5|
+|"AT3G60140"|"AT1G01480"|0.00148|3.5|
+|"AT2G35730"|"AT1G01480"|0.00130|5.5|
