@@ -1,10 +1,11 @@
 This folder contain R script to calculate partial correlation from a expression matrix.
-Prerequist:
+
+### Prerequist:
 * R package: GeneNet
 * R package: rshape
 
 
-Usage:
+### Usage:
 ```bash
 Rscript PCOR.R [InputFileName] [GoldStandardFileName] [NumberOfEdges] [OutputFileName]
 ```
@@ -17,11 +18,11 @@ Rscript PCOR.R [InputFileName] [GoldStandardFileName] [NumberOfEdges] [OutputFil
 
 * [OutputFileName] is the output file. Default: ./results/pcor.csv
 
-Example command line usage:
+#### Example command line usage:
 ```bash
 Rscript script/pcor/PCOR.R ./data/GSE10670_ave_TopVar.csv
 ```
-Example output format can be found in ./results/pcor.csv. Here is first few lines of this result.
+### Example output format can be found in ./results/pcor.csv. Here is first few lines of this result.
 
 ```
 "regulator","target","score","rank"
