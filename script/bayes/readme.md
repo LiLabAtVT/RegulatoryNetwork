@@ -1,6 +1,6 @@
 This folder contains Python scripts to infer gene network by Bayesian regression from a expression matrix.
 
-### Prerequist_:
+### Prerequist:
 
 * The script is run at Python 3.6.0 Anaconda
 * Python package: sys, os, warnings, numpy, random, csv, scipy.stats, sklearn.preprocessing, scipy.special, itertools, sklearn.metrics, math.
