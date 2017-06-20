@@ -7,18 +7,20 @@ This folder contains Python scripts to infer gene network by Bayesian regression
 
 ### Usage:
 ```bash
-Pythonscript MainBayesian.py [InputFileName] [GoldStandardFileName] [ListOfTFNames] [NumberOfEdges] [OutputFileName]
+Pythonscript MainBayesian.py [InputFileName] [ListOfTFNames] [GoldStandardFileName] [NumberOfEdges] [OutputFileName]
 ```
 
 * [InputFileName] is the name of input file,the file format should follow data /GSE10670_ave_TopVar.csv. Each row is a gene, each column is a condition.
 
-* [GoldStandardFileName] contains gold standard intercation pairs. Default: data/goldata.csv
-
 * [ListOfTFNames] is the name of all the transcription gene names. Default: tfs.csv
+
+* [GoldStandardFileName] contains gold standard intercation pairs. Default: data/goldata.csv
 
 * [NumberOfEdges] spcifies how many edges to write write to output file. Default: 100
 
 * [OutputFileName] is the output file. Default: ./results/Bayes.csv
+
+The [InputFileName] and [ListOfTFNames] are required for the.
 
 ### Example command line usage:
 ```bash
