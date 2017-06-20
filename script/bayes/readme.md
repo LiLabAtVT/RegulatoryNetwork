@@ -20,7 +20,7 @@ Pythonscript MainBayesian.py [InputFileName] [ListOfTFNames] [GoldStandardFileNa
 
 * [OutputFileName] is the output file. Default: ./results/Bayes.csv
 
-The [InputFileName] and [ListOfTFNames] are required for the.
+The [InputFileName] and [ListOfTFNames] are required for the input.
 
 ### Example command line usage:
 ```bash
