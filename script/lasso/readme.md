@@ -19,7 +19,7 @@ Pythonscript MainLasso.py [InputFileName] [ListOfTFNames] [GoldStandardFileName]
 
 * [OutputFileName] is the output file. Default: ./results/HalfThr.csv, ./results/HardThr.csv and ./results/SoftThr.csv
 
-The [InputFileName] and [ListOfTFNames] are required for the.
+The [InputFileName] and [ListOfTFNames] are required for the input.
 
 ### Example command line usage:
 ```bash
