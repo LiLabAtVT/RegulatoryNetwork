@@ -27,12 +27,12 @@ Pythonscript MainBayesian.py ./data/GSE10670_ave_TopVar.csv
 ### Example output format can be found in ./results/Bayes.csv. Here is first few lines of this result.
 
 ```
-regulator, target,  score,rank
-AT3G51960,AT3G51960,  1,    1
-AT5G42910,AT5G42910,  1,    2
-AT3G51960,AT2G41230,0.9933, 3
-AT2G46270,AT5G53710,0.9928, 4
-AT3G51960,AT2G45570,0.9915, 5
+regulator,target,score,rank
+AT3G51960,AT3G51960,1,1
+AT5G42910,AT5G42910,1,2
+AT3G51960,AT2G41230,0.9933,3
+AT2G46270,AT5G53710,0.9928,4
+AT3G51960,AT2G45570,0.9915,5
 ``` 
 The output is a comma separated table with four columns.
 
@@ -41,6 +41,6 @@ The output is a comma separated table with four columns.
 |AT3G51960|AT3G51960|1|1|
 |AT5G42910|AT5G42910|1|2|
 |AT3G51960|AT2G41230|0.9933|3|
-|AT2G46270|AT1G01480"|0.9928|4|
+|AT2G46270|AT1G01480|0.9928|4|
 |AT3G51960|AT1G01480|0.9915|5|
 
