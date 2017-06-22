@@ -1,15 +1,48 @@
-This folder contains scripts for Bayesian regression.Start the file from 'MainBayesian.py'
-The data used:
-'golddata.csv', which is golden standard dataset from Dapseq, first column is the TFs and
-the second column is the target genes.
-'GSE10670_ave_TopVar.csv': which is the expression matrix, each row is a gene (including the expression
-of genes and TFs) and each row is an experiment.
-'tfs.csv': which is a list of the names of all the TFs.
+This folder contains Python scripts to infer gene network by Bayesian regression from a expression matrix.
 
-The result will be save in a folder named 'result1'. Every single recognized TFs according to the
-'tfs.csv' file are save as a '.csv' file by their name. There are three columns in
-each the TFs name '.csv' files. The first column is the TF names, they are all same
-for each file itself. The second column is the inferred target genes and the third column
-is the inferred weight. A positive weight means the TF might increase the expression
-of the gene and a negative weight means the TF might inhibit the express of the
-gene.
+### Prerequist:
+
+* The script is run at Python 3.6.0 Anaconda
+* Python package: sys, os, warnings, numpy, random, csv, scipy.stats, sklearn.preprocessing, scipy.special, itertools, sklearn.metrics, math.
+
+### Usage:
+```bash
+Pythonscript MainBayesian.py [InputFileName] [ListOfTFNames] [GoldStandardFileName] [NumberOfEdges] [OutputFileName]
+```
+
+* [InputFileName] is the name of input file,the file format should follow data /GSE10670_ave_TopVar.csv. Each row is a gene, each column is a condition.
+
+* [ListOfTFNames] is the name of all the transcription gene names. Default: tfs.csv
+
+* [GoldStandardFileName] contains gold standard intercation pairs. Default: data/goldata.csv
+
+* [NumberOfEdges] spcifies how many edges to write write to output file. Default: 100
+
+* [OutputFileName] is the output file. Default: ./results/Bayes.csv
+
+The [InputFileName] and [ListOfTFNames] are required for the input.
+
+### Example command line usage:
+```bash
+Pythonscript MainBayesian.py ./data/GSE10670_ave_TopVar.csv 
+```
+### Example output format can be found in ./results/Bayes.csv. Here is first few lines of this result.
+
+```
+regulator,target,score,rank
+AT3G51960,AT3G51960,1,1
+AT5G42910,AT5G42910,1,2
+AT3G51960,AT2G41230,0.9933,3
+AT2G46270,AT5G53710,0.9928,4
+AT3G51960,AT2G45570,0.9915,5
+``` 
+The output is a comma separated table with four columns.
+
+|regulator|target|score|rank|
+|---|---|---|---|
+|AT3G51960|AT3G51960|1|1|
+|AT5G42910|AT5G42910|1|2|
+|AT3G51960|AT2G41230|0.9933|3|
+|AT2G46270|AT1G01480|0.9928|4|
+|AT3G51960|AT1G01480|0.9915|5|
+

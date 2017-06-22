@@ -7,7 +7,7 @@ This folder contain R script to calculate partial correlation from a expression 
 
 ### Usage:
 ```bash
-Rscript PCOR.R [InputFileName] [GoldStandardFileName] [NumberOfEdges] [OutputFileName]
+Rscript PCOR.R [InputFileName] [GoldStandardFileName] [ListOfTFNames] [NumberOfEdges] [OutputFileName]
 ```
 
 * [InputFileName] is the name of input file, the file format should follow data/GSE10670_ave_TopVar.csv. Each row is a gene, each column is a condition.
