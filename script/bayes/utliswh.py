@@ -1,16 +1,16 @@
 import numpy as np
 import csv
+import scipy.stats
 
 
 def read_input(
-        input_dir, exp_mat_file, tf_names_file,
+        exp_mat_file, tf_names_file,
         priors_file, gold_standard_file):
     # read the exp mat file, which is the data file contains the
     # gene expression
     IN = {}
-    filepath = input_dir + exp_mat_file
     exp_mat = []
-    with open(filepath, 'rt') as csvfile:
+    with open(exp_mat_file, 'rt') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ')
         for row in spamreader:
             exp_mat.append(row)
@@ -48,9 +48,8 @@ def read_input(
     IN['exp.mat.allgenename'] = exp_mat_allgenename
 
     # read the tf name file
-    filepath = input_dir + tf_names_file
     tf_names = []
-    with open(filepath, 'rt') as csvfile:
+    with open(tf_names_file, 'rt') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ')
         for row in spamreader:
             tf_names.append(row)
@@ -67,10 +66,9 @@ def read_input(
 
     # read the prior data
     if priors_file is not None:
-        filepath = input_dir + priors_file
         priors_mat = []
         priors_matuse = []
-        with open(filepath, 'rt') as csvfile:
+        with open(priors_file, 'rt') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=' ')
             for row in spamreader:
                 priors_mat.append(row)
@@ -91,13 +89,13 @@ def read_input(
         IN['priors.data'] = priors_data
     else:
         IN['priors.data'] = None
+        print('No priors data used')
 
     # read the golden standard data
     if gold_standard_file is not None:
-        filepath = input_dir + gold_standard_file
         gold_mat = []
         gold_matuse = []
-        with open(filepath, 'rt') as csvfile:
+        with open(gold_standard_file, 'rt') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=' ')
             for row in spamreader:
                 gold_mat.append(row)
@@ -118,6 +116,7 @@ def read_input(
         IN['gold.standard.data'] = gold_data
     else:
         IN['gold.standard.data'] = None
+        print('No golden standard dataset used')
     return IN
 
 # given the condition names, create meta data data frame that assumes all
@@ -148,3 +147,24 @@ def trivial_cluster_stack(datainp, colnameinp, rownameinp):
         dic1['redExp'] = datainp[i, ]
         clusterStack.append(dic1)
     return clusterStack
+
+
+def arrange_result(result_input):
+    relation_total = list()
+    relation_value = list()
+
+    for i in range(0, len(result_input)):
+        relationtf1 = result_input[i]
+        for j in range(0, len(relationtf1)):
+            relation1 = relationtf1[j]
+            relation_total.append(relation1)
+            relation_value.append(relation1[-1])
+    relation_value = np.asarray(relation_value)
+    relation_value = np.abs(relation_value)
+
+    orderval = relation_value.argsort()[::-1]
+    relation_valueorder = relation_value[orderval]
+    relation_totalorder = list(relation_total[i] for i in orderval)
+    rankval = scipy.stats.rankdata(relation_valueorder, method='average')[::-1]
+
+    return relation_totalorder, rankval

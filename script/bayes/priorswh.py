@@ -43,9 +43,11 @@ def getPriors(
             '--frac_fp_' + str(pp[2]) + '_perm_' + str(pp[3]) + ' '
         priors[name] = np.zeros((exp_mat.shape[0], len(tf_names)))
 
-        if pp[0] > 0 or pp[3] > 0:
+        if (pp[0] > 0 or pp[3] > 0) & (priors_mat is not None):
             priors[name] = getPriorMatrix(
                 priors_mat, pp, gs_mat, eval_on_subset, job_seed)
+        else:
+            priors[name] = np.zeros((len(tf_names), np.shape(exp_mat)[0]))
     return priors
 
 
