@@ -61,6 +61,9 @@ dapTF<-unique(TF2TA[TF2TA[,2]%in%tokeep,1]) # get DAP-seq TF list
 # [1] 387
 
 tokeepall<-unique(c(tokeep,dapTF))
+# check expression data:
+tokeepall<-tokeepall[tokeepall%in%rownames(ExprData)]
+
 
 # split genes to TF and targets
 tokeepTF<-tokeepall[tokeepall%in%allTF]
@@ -70,12 +73,14 @@ outTFmat<-ExprData[tokeepTF,]
 outOthermat<-ExprData[tokeepOther,]
 
 # write output:
-outTFfn<-paste(outprefix,'_TF.csv',sep='')
-outTAfn<-paste(outprefix,'_TA.csv',sep='')
+outTFfn<-paste(outprefix,'_TFlist.csv',sep='')
+outTAfn<-paste(outprefix,'_ExpMat.csv',sep='')
 #outGoldFN<-paste(outprefix,'_goldsd.csv',sep='')
 
-write.table(outTFmat,outTFfn,sep=',')
-write.table(outOthermat,outTAfn,sep=',')
+outmat<-rbind(outTFmat,outOthermat)
+outTFnames<-rownames(outTFmat)
+write.table(outTFnames,outTFfn,sep=',',row.names=FALSE,col.names=FALSE)
+write.table(outmat,outTAfn,sep=',')
 
 
 
