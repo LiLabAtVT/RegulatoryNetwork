@@ -157,8 +157,9 @@ def arrange_result(result_input):
         relationtf1 = result_input[i]
         for j in range(0, len(relationtf1)):
             relation1 = relationtf1[j]
-            relation_total.append(relation1)
-            relation_value.append(relation1[-1])
+            if relation1[0] != relation1[1]:
+                relation_total.append(relation1)
+                relation_value.append(relation1[-1])
     relation_value = np.asarray(relation_value)
     relation_value = np.abs(relation_value)
 
