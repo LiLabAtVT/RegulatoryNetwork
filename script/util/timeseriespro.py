@@ -3,10 +3,7 @@ import csv
 import scipy.stats
 import os
 
-os.chdir("/Users/Craftsman/Documents/Wei He/Blacksburg/Study/2017\
- spring/course/Problem Solving GBCB 5874/project/RegulatoryNetwork/data/ExpressionFromArray/TimeSeries")
-
-filename = 'GSE5624_ave_drought_shoot.csv'
+filename = 'GSE5623_ave_salt_root.csv'
 data_mat = []
 with open(filename, 'rt') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ')
@@ -46,10 +43,11 @@ a_value = mRNAtime/np.log(2)
 dataoutput = list()
 for data1 in data_mat_data:
     np.array(data1)
-    data1 = np.diff(data1)
+    data1diff = np.diff(data1)
     timediff = np.diff(time_stepuse)
-    result1 = np.divide(data1,timediff)
+    result1 = np.divide(data1diff,timediff)
     result1 = 1/a_value * result1
+    result1 = result1 + data1[0:-1]
     dataoutput.append(result1)
 
 pathsave = 'processed'
@@ -58,7 +56,7 @@ if not os.path.exists(pathsave):
 os.chdir(pathsave)
 
 
-exp_num = len(data1)
+exp_num = len(data1diff)
 exp_name = ['  ']
 for i in range(0, exp_num):
     exp_name.append('exp'+str(i+1))
