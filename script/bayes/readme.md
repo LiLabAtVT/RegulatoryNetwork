@@ -14,7 +14,7 @@ Pythonscript MainBayesian.py [InputFileName] [ListOfTFNames] [GoldStandardFileNa
 
 * [ListOfTFNames] is the name of all the transcription gene names. Default: tfs.csv
 
-* [GoldStandardFileName] contains gold standard intercation pairs. Default: data/goldata.csv
+* [GoldStandardFileName] contains gold standard intercation pairs. Default: data/golddata.csv
 
 * [NumberOfEdges] spcifies how many edges to write write to output file. Default: 100
 
