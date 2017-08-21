@@ -3,8 +3,11 @@ import csv
 import scipy.stats
 import os
 
+<<<<<<< HEAD
 os.chdir("/Users/Craftsman/Documents/Wei He/Blacksburg/Study/research/")
 
+=======
+>>>>>>> 3aa85e2a277dbd026babddeb57c6d2f8c89b5e9a
 filename = 'GSE5623_ave_salt_root.csv'
 data_mat = []
 with open(filename, 'rt') as csvfile:
