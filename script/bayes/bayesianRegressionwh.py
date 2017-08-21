@@ -9,8 +9,8 @@ def BBSR(X, Y, clr_mat, nS, no_pr_val, weight_mat, cores):
     # Scale and permute design response matrix
     X = sklearn.preprocessing.scale(X, axis=1)
     Y = sklearn.preprocessing.scale(Y, axis=1)
-    if nS > X.shape[1]:
-        nS = X.shape[1] - 1
+    if nS > X.shape[0]:
+        nS = X.shape[0] - 1
     # number of genes
     G = Y.shape[0]
     # max number of possible predictor (number of TFs)
@@ -71,7 +71,7 @@ def ReduceNumberOfPredictors(yin, xin, gin, n):
     bics = ExpBICforAllCombos(yin, xin, gin, combos)
     bicsavg = np.sum(combos * bics, axis=1)
     ret = np.zeros((K), dtype=bool)
-    ret[np.argsort(bicsavg)[1: n]] = True
+    ret[np.argsort(bicsavg)[2: n]] = True
 
     return ret
 

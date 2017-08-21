@@ -21,7 +21,7 @@ outprefix<-argv[4] # prefix of output files
 #outprefix<-'GSE10670_ave_topVar'
 
 ExprData  <- read.table(expfn, sep = "," , header = T, na.strings ="", 
-                        stringsAsFactors= F)
+                        stringsAsFactors= F, row.names = 1)
 
 TF2TA<-read.table(goldsd,sep = "," , header = T, na.strings ="", 
                   stringsAsFactors= F)
