@@ -69,7 +69,7 @@ def ReduceNumberOfPredictors(yin, xin, gin, n):
     combos2 = (aa == 1)
     combos = np.concatenate((combos2, combos1), axis=1)
     bics = ExpBICforAllCombos(yin, xin, gin, combos)
-    bicsavg = np.sum(combos * bics, axis=1)
+    bicsavg = np.sum(np.dot(np.diag(bics), combos.T).T, axis=1)
     ret = np.zeros((K), dtype=bool)
     ret[np.argsort(bicsavg)[2: n]] = True
 
@@ -146,10 +146,13 @@ def ExpBICforAllCombos(y, x, g, combos):
         comb = combos[:, i]
         x_tmp = x[:, comb]
         k = sum(comb)
+        xtxuse = xtx[comb, :]
+        xtxuse = xtxuse[:, comb]
+        xtyuse = xty[comb]
+        if np.linalg.matrix_rank(xtxuse) != xtxuse.shape[1]:
+            bics.append(float('Inf'))
+            continue
         try:
-            xtxuse = xtx[comb, :]
-            xtxuse = xtxuse[:, comb]
-            xtyuse = xty[comb]
             if k == 1:
                 bhat = xtyuse / xtxuse
             else:
@@ -208,7 +211,9 @@ def BestSubsetRegression(y, x, g):
                     bhat = xty / xtx
                 else:
                     bhat = np.linalg.solve(xtx, xty)
-                betas[combos[:, best]] = bhat
+
+                indbetas = [i1 for i1, aa in enumerate(combos[:, best]) if aa]
+                betas[indbetas] = bhat
                 not_done = False
             except Exception:
                 bics[best] = float('Inf')
