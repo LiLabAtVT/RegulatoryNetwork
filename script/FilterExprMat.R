@@ -17,8 +17,8 @@ outprefix<-argv[4] # prefix of output files
 # these are for testing:
 #goldsd<-'./data/golddata.csv'
 #tfnames<-'./data/Ath_TF_list'
-#expfn<-'./data/TestRunData/GSE10670_ave.csv'
-#outprefix<-'GSE10670_ave_topVar'
+#expfn<-'./data/ExpressionFromArray/TimeSeries/GSE30097_ave_LowPh_Root.csv'
+#outprefix<-'GSE30097_ave_LowPh_Root_topVar'
 
 ExprData  <- read.table(expfn, sep = "," , header = T, na.strings ="", 
                         stringsAsFactors= F, row.names = 1)
@@ -78,9 +78,11 @@ outTAfn<-paste(outprefix,'_ExpMat.csv',sep='')
 #outGoldFN<-paste(outprefix,'_goldsd.csv',sep='')
 
 outmat<-rbind(outTFmat,outOthermat)
+write.table(outmat,outTAfn,sep=',')
+
+# uncomment these to write to output TF list files.
 outTFnames<-rownames(outTFmat)
 write.table(outTFnames,outTFfn,sep=',',row.names=FALSE,col.names=FALSE)
-write.table(outmat,outTAfn,sep=',')
 
 
 
